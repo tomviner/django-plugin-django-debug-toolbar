@@ -1,22 +1,27 @@
 import djp
+from debug_toolbar.toolbar import debug_toolbar_urls
 
 
 @djp.hookimpl
 def installed_apps():
     # A list of app strings to add to INSTALLED_APPS:
-    return []
+    # Also need "django.contrib.staticfiles",
+    return ["debug_toolbar"]
 
 
 @djp.hookimpl
 def urlpatterns():
     # A list of URL patterns to add to urlpatterns:
-    return []
+    return debug_toolbar_urls()
 
 
 @djp.hookimpl
 def settings(current_settings):
     # Make changes to the Django settings.py globals here
-    pass
+    INTERNAL_IPS = current_settings.get("INTERNAL_IPS", [])
+    INTERNAL_IPS.append("127.0.0.1")
+    current_settings["INTERNAL_IPS"] = INTERNAL_IPS
+
 
 
 @djp.hookimpl
@@ -24,4 +29,6 @@ def middleware():
     # A list of middleware class strings to add to MIDDLEWARE:
     # Wrap strings in djp.Before("middleware_class_name") or
     # djp.After("middleware_class_name") to specify before or after
-    return []
+    return [
+        djp.Before("debug_toolbar.middleware.DebugToolbarMiddleware")
+    ]
