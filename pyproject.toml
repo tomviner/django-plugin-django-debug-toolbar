@@ -1,0 +1,33 @@
+[project]
+name = "django-plugin-django-debug-toolbar"
+version = "0.1"
+description = "Django plugin that configures the Django Debug Toolbar"
+readme = "README.md"
+authors = [{name = "Tom Viner"}]
+license = {text = "Apache-2.0"}
+classifiers = [
+    "License :: OSI Approved :: Apache Software License"
+]
+dependencies = [
+    "django",
+    "djp",
+]
+
+[project.urls]
+Homepage = "https://github.com/tomviner/django-plugin-django-debug-toolbar"
+Changelog = "https://github.com/tomviner/django-plugin-django-debug-toolbar/releases"
+Issues = "https://github.com/tomviner/django-plugin-django-debug-toolbar/issues"
+CI = "https://github.com/tomviner/django-plugin-django-debug-toolbar/actions"
+
+[project.entry-points.djp]
+django_plugin_django_debug_toolbar = "django_plugin_django_debug_toolbar"
+
+[tool.setuptools.package-data]
+"*" = ["*.html", "*.js", "*.css"]
+
+[project.optional-dependencies]
+test = ["pytest", "pytest-django"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "tests.test_project.settings"
+pythonpath = ["."]
