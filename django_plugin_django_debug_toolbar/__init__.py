@@ -22,6 +22,9 @@ def settings(current_settings):
     INTERNAL_IPS.append("127.0.0.1")
     current_settings["INTERNAL_IPS"] = INTERNAL_IPS
 
+    # Debug Toolbar will only display when DEBUG = True
+    current_settings["DEBUG"] = True
+
 
 
 @djp.hookimpl
