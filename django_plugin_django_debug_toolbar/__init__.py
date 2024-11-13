@@ -5,7 +5,6 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 @djp.hookimpl
 def installed_apps():
     # A list of app strings to add to INSTALLED_APPS:
-    # Also need "django.contrib.staticfiles",
     return ["debug_toolbar"]
 
 
