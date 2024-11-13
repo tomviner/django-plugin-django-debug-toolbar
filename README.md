@@ -17,21 +17,22 @@ pip install django-plugin-django-debug-toolbar
 ```
 ## Usage
 
-Looking at [Django Debug Toolbar's installation instructions](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html) - *and using their numbering* - this plugin takes care of the following steps:
+Looking at [Django Debug Toolbar's installation instructions](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html), this plugin takes care of the following steps (and using their numbering):
 
-- 1. Install the Package
-- 3. Install the App
-- 4. Add the URLs
-- 5. Add the Middleware
-- 6. Configure Internal IPs
+- \#1\. Install the Package
+- \#3\. Install the App
+- \#4\. Add the URLs
+- \#5\. Add the Middleware
+- \#6\. Configure Internal IPs
+    - to include `127.0.0.1`
 
 But you still need to:
 
-- 2. Check for Prerequisites
+- \#2\. Check for Prerequisites
     - like settings for static files and templates
-- 6. Configure Internal IPs
+- \#6\. Configure Internal IPs
     - if you require IPs other than 127.0.0.1, set them in `INTERNAL_IPS` in your settings
-- 7. Disable the toolbar when running tests (optional)
+- \#7\. Disable the toolbar when running tests (optional)
     - perhaps do this by disabling djp when testing
 
 ## Development
