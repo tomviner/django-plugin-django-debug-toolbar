@@ -1,6 +1,6 @@
 [project]
 name = "django-plugin-django-debug-toolbar"
-version = "0.3.1"
+version = "0.3.2"
 description = "Django plugin that configures the Django Debug Toolbar"
 readme = "README.md"
 authors = [{name = "Tom Viner"}]
