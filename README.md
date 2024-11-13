@@ -7,6 +7,12 @@
 
 Django plugin that installs and configures the Django Debug Toolbar
 
+## Goal
+
+The Django Debug Toolbar is amazingly useful for development. It's so powerful that it's very dangerous to activate it in production.
+
+The goal of this plugin is to enable a developer to activate the Django Debug Toolbar with the minimum number of steps, while keeping debug related code out of the codebase.
+
 ## Installation
 
 First configure your Django project [to use DJP](https://djp.readthedocs.io/en/latest/installing_plugins.html).
@@ -17,23 +23,23 @@ pip install django-plugin-django-debug-toolbar
 ```
 ## Usage
 
-Looking at [Django Debug Toolbar's installation instructions](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html), this plugin takes care of the following steps (and using their numbering):
+Looking at [Django Debug Toolbar's installation instructions](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html), this plugin takes care of the following steps (using their numbering):
 
-- \#1\. Install the Package
-- \#3\. Install the App
-- \#4\. Add the URLs
-- \#5\. Add the Middleware
-- \#6\. Configure Internal IPs
+- [#1. Install the Package](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#install-the-package)
+- [#3. Install the App](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#install-the-app)
+- [#4. Add the URLs](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#add-the-urls)
+- [#5. Add the Middleware](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#add-the-middleware)
+- [#6. Configure Internal IPs](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#configure-internal-ips)
     - to include `127.0.0.1`
 
 But you still need to:
 
-- \#2\. Check for Prerequisites
+- [#2. Check for Prerequisites](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#check-for-prerequisites)
     - like settings for static files and templates
-- \#6\. Configure Internal IPs
-    - if you require IPs other than 127.0.0.1, set them in `INTERNAL_IPS` in your settings
-- \#7\. Disable the toolbar when running tests (optional)
-    - perhaps do this by disabling djp when testing
+- [#6. Configure Internal IPs](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#configure-internal-ips)
+    - if you require IPs other than `127.0.0.1`, set them in `INTERNAL_IPS` in your settings
+- [#7. Disable the toolbar when running tests (optional)](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#disable-the-toolbar-when-running-tests-optional)
+    - perhaps do this by disabling DJP when testing
 
 ## Development
 
