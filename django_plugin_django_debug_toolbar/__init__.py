@@ -34,8 +34,9 @@ def next_index_or_start(list, item):
 def inject_middleware(current_middleware):
     """Inject DebugToolbarMiddleware early, but not too early."""
     TOOLBAR_MUST_GO_AFTER = [
-        "xforwardedfor_middleware.middleware.XForwardedForMiddleware",
         "django.middleware.gzip.GZipMiddleware",
+        "xff.middleware.XForwardedForMiddleware",
+        "x_forwarded_for.middleware.XForwardedForMiddleware",
     ]
     position = max(
         next_index_or_start(current_middleware, mw) for mw in TOOLBAR_MUST_GO_AFTER

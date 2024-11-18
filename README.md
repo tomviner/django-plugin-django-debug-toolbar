@@ -43,9 +43,9 @@ But you still need to:
 
 ## Middleware ordering
 
-This plugin injects the Debug Toolbar Middleware early, but not too early.
+This plugin injects the Debug Toolbar Middleware early, but not too early, in the middleware list.
 
-It needs to run after any midddleware that decodes requests (`GZipMiddleware`), or sets `request.META['REMOTE_ADDR']` (like [`XForwardedForMiddleware`](https://github.com/allo-/django-xforwardedfor-middleware)).
+It needs to run after any midddleware that decodes requests (`GZipMiddleware`), or sets `request.META['REMOTE_ADDR']` (like [`django-xforwardedfor-middleware`](https://github.com/allo-/django-xforwardedfor-middleware) or [`django-xff`](https://github.com/ferrix/django-xff)).
 If you have any other middleware that needs to run before the Debug Toolbar Middleware, please open a ticket and we'll add it to the `TOOLBAR_MUST_GO_AFTER` list.
 
 ## Development
