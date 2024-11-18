@@ -41,6 +41,13 @@ But you still need to:
 - [#7. Disable the toolbar when running tests (optional)](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#disable-the-toolbar-when-running-tests-optional)
     - perhaps do this by disabling DJP when testing
 
+## Middleware ordering
+
+This plugin injects the Debug Toolbar Middleware early, but not too early.
+
+It needs to run after any midddleware that decodes requests (`GZipMiddleware`), or sets `request.META['REMOTE_ADDR']` (like [`XForwardedForMiddleware`](https://github.com/allo-/django-xforwardedfor-middleware)).
+If you have any other middleware that needs to run before the Debug Toolbar Middleware, please open a ticket and we'll add it to the `TOOLBAR_MUST_GO_AFTER` list.
+
 ## Development
 
 To set up this plugin locally, first checkout the code. Then create a new virtual environment:
