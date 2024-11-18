@@ -1,6 +1,7 @@
 import pytest
-from django.test.client import Client
 from django.conf import settings
+from django.test.client import Client
+
 from django_plugin_django_debug_toolbar import inject_middleware
 
 

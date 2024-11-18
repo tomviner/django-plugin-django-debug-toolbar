@@ -1,6 +1,6 @@
 [project]
 name = "django-plugin-django-debug-toolbar"
-version = "0.3.2"
+version = "0.4.0"
 description = "Django plugin that configures the Django Debug Toolbar"
 readme = "README.md"
 authors = [{name = "Tom Viner"}]
@@ -33,6 +33,7 @@ test = [
     "pytest-cov",
     "rust-just",
     "ruff",
+    "typos",
 ]
 
 [tool.pytest.ini_options]
@@ -47,5 +48,13 @@ addopts = [
 
 [tool.ruff]
 line-length = 88
-target-version = "py38"
-select = ["E", "F", "I"]
+target-version = "py312"
+lint.select = [
+    "E",  # pycodestyle Error
+    "W",  # pycodestyle Warning
+    "F",  # Pyflakes
+    "I",  # isort
+    "C90",  # mccabe (code complexity)
+    "T10",  # flake8-debugger
+    "DJ",  # flake8-django
+]

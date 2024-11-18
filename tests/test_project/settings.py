@@ -2,8 +2,7 @@ import djp
 
 SECRET_KEY = "django-insecure-test-key"
 
-INSTALLED_APPS = [
-]
+INSTALLED_APPS = []
 
 MIDDLEWARE = [
     "django.middleware.locale.LocaleMiddleware",
