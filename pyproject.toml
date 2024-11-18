@@ -27,8 +27,25 @@ django_plugin_django_debug_toolbar = "django_plugin_django_debug_toolbar"
 "*" = ["*.html", "*.js", "*.css"]
 
 [project.optional-dependencies]
-test = ["pytest", "pytest-django"]
+test = [
+    "pytest",
+    "pytest-django",
+    "pytest-cov",
+    "rust-just",
+    "ruff",
+]
 
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "tests.test_project.settings"
 pythonpath = ["."]
+django_debug_mode = 'keep'
+addopts = [
+    "--cov=django_plugin_django_debug_toolbar",
+    "--cov-report=term-missing",
+    "--cov-fail-under=100"
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py38"
+select = ["E", "F", "I"]

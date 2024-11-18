@@ -24,13 +24,25 @@ def settings(current_settings):
     # Debug Toolbar will only display when DEBUG = True
     current_settings["DEBUG"] = True
 
+    current_settings["MIDDLEWARE"] = inject_middleware(current_settings["MIDDLEWARE"])
 
 
-@djp.hookimpl
-def middleware():
-    # A list of middleware class strings to add to MIDDLEWARE:
-    # Wrap strings in djp.Before("middleware_class_name") or
-    # djp.After("middleware_class_name") to specify before or after
-    return [
-        djp.Before("debug_toolbar.middleware.DebugToolbarMiddleware")
+def next_index_or_start(list, item):
+    try:
+        return list.index(item) + 1
+    except ValueError:
+        return 0
+
+
+def inject_middleware(current_middleware):
+    """Inject DebugToolbarMiddleware early, but not too early."""
+    TOOLBAR_MUST_GO_AFTER = [
+        "xforwardedfor_middleware.middleware.XForwardedForMiddleware",
+        "django.middleware.gzip.GZipMiddleware",
     ]
+    position = max(next_index_or_start(current_middleware, mw) for mw in TOOLBAR_MUST_GO_AFTER)
+
+    return current_middleware[:position] + [
+        "debug_toolbar.middleware.DebugToolbarMiddleware"
+    ] + current_middleware[position:]
+    

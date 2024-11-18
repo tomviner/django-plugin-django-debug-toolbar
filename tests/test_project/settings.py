@@ -1,12 +1,15 @@
 import djp
 
 SECRET_KEY = "django-insecure-test-key"
-DEBUG = True
-ALLOWED_HOSTS = ["*"]
 
-INSTALLED_APPS = []
+INSTALLED_APPS = [
+]
 
-MIDDLEWARE = []
+MIDDLEWARE = [
+    "django.middleware.locale.LocaleMiddleware",
+    "django.middleware.gzip.GZipMiddleware",
+    "django.middleware.security.SecurityMiddleware",
+]
 
 ROOT_URLCONF = "tests.test_project.urls"
 
@@ -23,7 +26,5 @@ TEMPLATES = [
         "APP_DIRS": True,
     }
 ]
-
-USE_TZ = True
 
 djp.settings(globals())
