@@ -15,6 +15,19 @@ def test_installed_apps_injected():
     assert "debug_toolbar" in settings.INSTALLED_APPS
 
 
+def test_urlpatterns_injected():
+    urlconf = __import__(settings.ROOT_URLCONF)
+    assert len(urlconf.test_project.urls.urlpatterns) > 1
+
+
+def test_internal_ips_injected():
+    assert "127.0.0.1" in settings.INTERNAL_IPS
+
+
+def test_debug_is_true():
+    assert settings.DEBUG is True
+
+
 def test_toolbar_middleware_injected():
     assert settings.MIDDLEWARE == [
         "django.middleware.locale.LocaleMiddleware",
@@ -22,11 +35,6 @@ def test_toolbar_middleware_injected():
         "debug_toolbar.middleware.DebugToolbarMiddleware",
         "django.middleware.security.SecurityMiddleware",
     ]
-
-
-def test_urlpatterns_injected():
-    urlconf = __import__(settings.ROOT_URLCONF)
-    assert len(urlconf.test_project.urls.urlpatterns) > 1
 
 
 def test_debug_toolbar_panel_page_served():

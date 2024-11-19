@@ -14,9 +14,7 @@ def urlpatterns():
 
 @djp.hookimpl
 def settings(current_settings):
-    INTERNAL_IPS = current_settings.get("INTERNAL_IPS", [])
-    INTERNAL_IPS.append("127.0.0.1")
-    current_settings["INTERNAL_IPS"] = INTERNAL_IPS
+    current_settings.setdefault("INTERNAL_IPS", []).append("127.0.0.1")
 
     # Debug Toolbar will only display when DEBUG = True
     current_settings["DEBUG"] = True
