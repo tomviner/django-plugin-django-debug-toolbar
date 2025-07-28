@@ -4,7 +4,7 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 
 @djp.hookimpl
 def installed_apps():
-    return ["django.contrib.staticfiles", "debug_toolbar"]
+    return ["debug_toolbar"]
 
 
 @djp.hookimpl
@@ -14,12 +14,15 @@ def urlpatterns():
 
 @djp.hookimpl
 def settings(current_settings):
+    if "django.contrib.staticfiles" not in current_settings["INSTALLED_APPS"]:
+        current_settings["INSTALLED_APPS"].append("django.contrib.staticfiles")
+
+    current_settings.setdefault("STATIC_URL", "static/")
+
     current_settings.setdefault("INTERNAL_IPS", []).append("127.0.0.1")
 
     # Debug Toolbar will only display when DEBUG = True
     current_settings["DEBUG"] = True
-
-    current_settings.setdefault("STATIC_URL", "static/")
 
     current_settings["MIDDLEWARE"] = inject_middleware(current_settings["MIDDLEWARE"])
 
