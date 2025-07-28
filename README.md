@@ -26,6 +26,8 @@ pip install django-plugin-django-debug-toolbar
 Looking at [Django Debug Toolbar's installation instructions](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html), this plugin takes care of the following steps (using their numbering):
 
 - [#1. Install the Package](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#install-the-package)
+- [#2. Check for Prerequisites](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#check-for-prerequisites)
+    - setup `django.contrib.staticfiles`
 - [#3. Install the App](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#install-the-app)
 - [#4. Add the URLs](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#add-the-urls)
 - [#5. Add the Middleware](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#add-the-middleware)
@@ -35,7 +37,7 @@ Looking at [Django Debug Toolbar's installation instructions](https://django-deb
 But you still need to:
 
 - [#2. Check for Prerequisites](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#check-for-prerequisites)
-    - like settings for static files and templates
+    - like settings for templates
 - [#6. Configure Internal IPs](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#configure-internal-ips)
     - if you require IPs other than `127.0.0.1`, set them in `INTERNAL_IPS` in your settings
 - [#7. Disable the toolbar when running tests (optional)](https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#disable-the-toolbar-when-running-tests-optional)
