@@ -1,6 +1,7 @@
 import djp
 
 SECRET_KEY = "django-insecure-test-key"
+DEBUG = True
 
 INSTALLED_APPS = []
 

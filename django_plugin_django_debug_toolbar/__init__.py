@@ -21,9 +21,6 @@ def settings(current_settings):
 
     current_settings.setdefault("INTERNAL_IPS", []).append("127.0.0.1")
 
-    # Debug Toolbar will only display when DEBUG = True
-    current_settings["DEBUG"] = True
-
     current_settings["MIDDLEWARE"] = inject_middleware(current_settings["MIDDLEWARE"])
 
 
